@@ -1,11 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class App extends Component {
+class App extends React.Component {
+
+  state = {
+      txt: 'Here\'s some text: from state'
+  }
+
+  update = (event) => {
+    this.setState({txt: event.target.value});
+  }
+
   render() {
     return (
-      <h1>Hello!</h1>
+      <div>
+        <input
+        onChange={this.update} />
+        <h1>{this.state.txt}</h1>
+      </div>
     );
   }
 }
+
+App.propTypes = {
+  txt: PropTypes.string.isRequired
+};
 
 export default App;
